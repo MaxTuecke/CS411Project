@@ -1,11 +1,6 @@
 import flask
 from flask import Flask
 from flask import (abort, flash, redirect, render_template, request, session, url_for)
-import google.oauth2.credentials
-from google.oauth2.id_token import verify_oauth2_token
-import google_auth_oauthlib.flow
-from google.auth.transport import requests
-from decorators import authenticated
 import requests as REST
 import uuid, json
 
