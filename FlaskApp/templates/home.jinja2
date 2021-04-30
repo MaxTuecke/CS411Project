@@ -1,0 +1,49 @@
+{%extends "base.jinja2"%}
+
+{%block title%}Home{%endblock%}
+
+{%block body%}
+<!-- Page Header -->
+<!-- Set background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url({{url_for('static', filename='img/home-bg.jpg')}})">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="site-heading">
+          <h1>T106 Project</h1>
+          <hr class="small">
+          <span class="subheading">411 Web App</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+  {%include 'messages.jinja2'%}
+     <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form role="form" action="{{url_for('home')}}" method="POST">
+            <div class="form-group">
+                <button type="submit" name='button_insert' value='button_insert' class="btn btn-primary">Insert</button>
+                <button type="submit" name='button_search' value='button_search' class="btn btn-primary">Read</button>
+                <button type="submit" name='button_update' value='button_update' class="btn btn-primary">Update</button>
+                <button type="submit" name='button_delete' value='button_delete' class="btn btn-primary">Delete</button>
+                <button type="submit" name='button_adv' value='button_adv' class="btn btn-primary">Advanced Query</button>
+                <button type="submit" name='button_setid' value='button_setid' class="btn btn-primary">Set ID</button>
+            </div>
+        </form>
+        
+        <form role="form" action="{{url_for('home')}}" method="POST">
+            <div class="form-group">
+                <button type="submit" name='rec_m' value='rec_m' class="btn btn-primary">Find Recommended Movies</button>
+                <button type="submit" name='fav' value='fav' class="btn btn-primary">Favorites</button>
+                <button type="submit" name='ratings' value='ratings' class="btn btn-primary">Update Ratings</button>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
+<hr />
+{%endblock%}

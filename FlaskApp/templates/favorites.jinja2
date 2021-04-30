@@ -1,0 +1,52 @@
+{%extends "base.jinja2"%}
+
+{%block title%}
+  EDIT FAVORITES
+{%endblock%}
+
+{%block body%}
+
+  {%include "header.jinja2"%}
+
+  <div class="container">
+    <div class="page-header">
+      <h1>EDIT FAVORITES</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <form role="form" action="{{url_for('favorites')}}" method="POST">
+            <h4>Current Favorites</h4>
+            {%if fav|length > 0 %}
+                {% for result in fav %}
+                        <div class="form-group">
+                        <h4>Movie ID: {{result[0]}}, Movie Name: {{result[1]}}</h4>
+                        <button type="submit" class="btn btn-primary" name="rem_fav" value="{{result[0]}}">Remove</button>
+                        </div>
+                {% endfor %}
+            {%else%}
+                <h4>NONE FOR CURRENT USER ID</h4>
+            {%endif%}
+            
+            
+            
+            <label for="name">Add Favorite</label>
+            <input
+              type="text"
+              class="form-control"
+              id="fav_add"
+              name="fav_add"
+              placeholder="movie_id"
+              tabindex="1"
+            >
+            <button type="submit" class="btn btn-primary" name="add_fav" value="add_fav">Add</button>
+            
+            
+            
+        
+            
+        </form>
+      </div>
+    </div>
+  </div>
+{%endblock%}

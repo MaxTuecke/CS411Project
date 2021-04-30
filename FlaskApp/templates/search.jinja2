@@ -1,0 +1,75 @@
+{%extends "base.jinja2"%}
+
+{%block title%}
+  SEARCH DIRECTOR
+{%endblock%}
+
+{%block body%}
+
+  {%include "header.jinja2"%}
+
+  <div class="container">
+    <div class="page-header">
+      <h1>SEARCH DIRECTOR</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <form role="form" action="{{url_for('search')}}" method="POST">
+        
+        <div class="form-group">
+            <label for="name">Director Id</label>
+            <input
+              type="text"
+              class="form-control"
+              id="search_id"
+              name="search_id"
+              placeholder="dir id"
+              tabindex="1"
+            >
+          </div>
+          
+            <div class="form-group">
+            <label for="name">Director Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="search_name"
+              name="search_name"
+              placeholder="dir name"
+              tabindex="2"
+            >
+          </div>
+          
+            <div class="form-group">
+            <label for="name">Director Birth Year</label>
+            <input
+              type="text"
+              class="form-control"
+              id="search_birth"
+              name="search_birth"
+              placeholder="dir birth"
+              tabindex="3"
+            >
+          </div>
+          
+		  <div class="form-group">
+            <button type="submit" class="btn btn-primary" name="search_dir_id" value="search_dir_id">Search ID</button>
+            <button type="submit" class="btn btn-primary" name="search_dir_name" value="search_dir_name">Search Name</button>
+            <button type="submit" class="btn btn-primary" name="search_dir_birth" value="search_dir_birth">Search Birth</button>
+
+          </div>
+          
+            {%if search_data['status'] and search_data['out']|length > 0 %}
+                <h2>SEARCH RESULTS:</h2>
+                {% for result in search_data['out'] %}
+                        <h4>Director ID: {{result[0]}}, Director Name: {{result[1]}}, Director Birthdate: {{result[2]}}</h4>
+                {% endfor %}
+            {%else%}
+                <h4>SEARCH DIRECTOR: NO RESULTS</h4>
+            {%endif%}
+        </form>
+      </div>
+    </div>
+  </div>
+{%endblock%}

@@ -1,0 +1,68 @@
+{%extends "base.jinja2"%}
+
+{%block title%}
+  INSERT DIRECTOR
+{%endblock%}
+
+{%block body%}
+
+  {%include "header.jinja2"%}
+
+  <div class="container">
+    <div class="page-header">
+      <h1>INSERT DIRECTOR</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <form role="form" action="{{url_for('insert')}}" method="POST">
+        
+        <div class="form-group">
+            <label for="name">Director Id</label>
+            <input
+              type="text"
+              class="form-control"
+              id="insert_id"
+              name="insert_id"
+              placeholder="dir id"
+              required="required"
+              tabindex="1"
+            >
+          </div>
+          
+        <div class="form-group">
+            <label for="name">Director Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="insert_name"
+              name="insert_name"
+              placeholder="dir name"
+              required="required"
+              tabindex="1"
+            >
+          </div>
+          
+          
+        <div class="form-group">
+            <label for="name">Director Birthdate</label>
+            <input
+              type="text"
+              class="form-control"
+              id="insert_birth"
+              name="insert_birth"
+              placeholder="dir birth"
+              required="required"
+              tabindex="1"
+            >
+          </div>
+          
+		  <div class="form-group">
+            <button type="submit" class="btn btn-primary" name="insert_dir" value="insert_dir">Insert</button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+{%endblock%}

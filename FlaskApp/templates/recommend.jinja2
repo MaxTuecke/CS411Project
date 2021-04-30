@@ -1,0 +1,38 @@
+{%extends "base.jinja2"%}
+
+{%block title%}
+        Find Recommended Movies
+{%endblock%}
+
+{%block body%}
+
+  {%include "header.jinja2"%}
+
+  <div class="container">
+    <div class="page-header">
+      <h1>Find Recommended Movies</h1>
+        <h3>Current User ID: {{user_id}}</h3>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <form role="form" action="{{url_for('recm')}}" method="POST">
+          
+		  <div class="form-group">
+            <button type="submit" class="btn btn-primary" name="recm_r" value="recm_r">Run Find Movies</button>
+          </div>
+            
+            {%if q_data['status'] and q_data['out']|length > 0 %}
+                <h2>QUERY RESULTS:</h2>
+                {% for result in q_data['out'] %}
+                        <h4>Movie Name: {{result['movie_name']}}, Average Rating: {{result['movie_rating']}}</h4>
+                {% endfor %}
+            {%else%}
+                <h4>QUERY RESULTS: NO RESULTS</h4>
+            {%endif%}
+            
+        </form>
+      </div>
+    </div>
+  </div>
+{%endblock%}

@@ -1,0 +1,37 @@
+{%extends "base.jinja2"%}
+
+{%block title%}
+  ADVANCED QUERY
+{%endblock%}
+
+{%block body%}
+
+  {%include "header.jinja2"%}
+
+  <div class="container">
+    <div class="page-header">
+      <h1>ADVANCED QUERY</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <form role="form" action="{{url_for('advq')}}" method="POST">
+          
+		  <div class="form-group">
+            <button type="submit" class="btn btn-primary" name="adv_q_r" value="adv_q_r">Run Advanced Query</button>
+          </div>
+            
+            {%if q_data['status'] and q_data['out']|length > 0 %}
+                <h2>QUERY RESULTS:</h2>
+                {% for result in q_data['out'] %}
+                        <h4>Director ID: {{result[0]}}, Average Rating: {{result[1]}}, Min Num Ratings: {{result[2]}}</h4>
+                {% endfor %}
+            {%else%}
+                <h4>QUERY RESULTS: NO RESULTS</h4>
+            {%endif%}
+            
+        </form>
+      </div>
+    </div>
+  </div>
+{%endblock%}
